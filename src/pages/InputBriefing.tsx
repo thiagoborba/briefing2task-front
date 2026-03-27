@@ -1,0 +1,62 @@
+import { useState } from 'react';
+import styles from './InputBriefing.module.css';
+
+function InputBriefing() {
+  const [briefing, setBriefing] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  return (
+    <div className={styles.page}>
+      <div className={styles.container}>
+        <header className={styles.header}>
+          <div className={styles.badge}>AI-Powered</div>
+          <h1 className={styles.title}>Briefing to Tasks</h1>
+          <p className={styles.subtitle}>
+            Cole seu briefing abaixo e transforme-o em tarefas estruturadas
+            automaticamente.
+          </p>
+        </header>
+
+        <form className={styles.card} onSubmit={console.log}>
+          <label htmlFor="briefing" className={styles.label}>
+            Briefing
+          </label>
+          <textarea
+            id="briefing"
+            className={styles.textarea}
+            placeholder="Descreva o projeto, objetivos, requisitos, restrições e qualquer contexto relevante..."
+            value={briefing}
+            onChange={(e) => setBriefing(e.target.value)}
+          />
+          {error && <p className={styles.error}>{error}</p>}
+          <div className={styles.footer}>
+            <span className={styles.charCount}>
+              {briefing.length} caracteres
+            </span>
+            <button
+              type="submit"
+              className={styles.button}
+              disabled={briefing.trim().length === 0 || loading}
+            >
+              <span>{loading ? 'Analisando...' : 'Analisar Briefing'}</span>
+              {!loading && (
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              )}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+export default InputBriefing;
