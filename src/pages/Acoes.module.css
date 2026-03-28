@@ -1,0 +1,164 @@
+.page {
+  min-height: 100vh;
+  background: #0a0a0f;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.container {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+  padding-bottom: 0.5rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  color: #a78bfa;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #f1f0f5;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 0.9375rem;
+  color: #6b6880;
+  max-width: 560px;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: #111118;
+  border: 1px solid #1e1d2a;
+  border-radius: 14px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.card:hover:not(:disabled) {
+  border-color: rgba(139, 92, 246, 0.4);
+  background: #13121c;
+}
+
+.card:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.cardCopied {
+  border-color: rgba(52, 211, 153, 0.4) !important;
+  background: rgba(52, 211, 153, 0.04) !important;
+}
+
+.actionTitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #e2e0ec;
+}
+
+.actionDesc {
+  font-size: 0.8125rem;
+  color: #6b6880;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.copyLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #3a3850;
+  margin-top: 0.5rem;
+}
+
+.cardCopied .copyLabel {
+  color: #34d399;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+}
+
+.primaryButton {
+  padding: 0.625rem 1.5rem;
+  border-radius: 8px;
+  background: #7c3aed;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background 0.15s ease;
+  cursor: pointer;
+}
+
+.primaryButton:hover {
+  background: #6d28d9;
+}
+
+.secondaryButton {
+  padding: 0.625rem 1.5rem;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid #1e1d2a;
+  color: #6b6880;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: border-color 0.15s ease, color 0.15s ease;
+  cursor: pointer;
+}
+
+.secondaryButton:hover {
+  border-color: #3a3850;
+  color: #d4d2e0;
+}
+
+.empty {
+  color: #6b6880;
+  text-align: center;
+  padding: 2rem 0;
+}

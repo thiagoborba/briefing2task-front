@@ -1,10 +1,37 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './InputBriefing.module.css';
+
+const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:3000';
 
 function InputBriefing() {
   const [briefing, setBriefing] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setError(null);
+    setLoading(true);
+    try {
+      const res = await fetch(`${API_URL}/analyse-briefing`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ briefing }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error ?? `Erro ${res.status}`);
+      }
+      const data = await res.json();
+      navigate('/estrutura-analisada', { state: { result: data, briefing } });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Erro ao analisar briefing.');
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <div className={styles.page}>
@@ -18,7 +45,7 @@ function InputBriefing() {
           </p>
         </header>
 
-        <form className={styles.card} onSubmit={console.log}>
+        <form className={styles.card} onSubmit={handleSubmit}>
           <label htmlFor="briefing" className={styles.label}>
             Briefing
           </label>
