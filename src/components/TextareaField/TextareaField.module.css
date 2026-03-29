@@ -1,0 +1,36 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #6b6880;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 280px;
+  background: #0d0d14;
+  border: 1px solid #1e1d2a;
+  border-radius: 10px;
+  padding: 1rem;
+  color: #e2e0ec;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.textarea::placeholder {
+  color: #3a3850;
+}
+
+.textarea:focus {
+  border-color: #7c3aed;
+}

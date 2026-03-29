@@ -5,6 +5,7 @@ import { analyseBriefing } from '../../api';
 import PageLayout from '../../components/PageLayout';
 import PageHeader from '../../components/PageHeader';
 import Button from '../../components/Button';
+import TextareaField from '../../components/TextareaField';
 
 function InputBriefing() {
   const [briefing, setBriefing] = useState('');
@@ -35,12 +36,9 @@ function InputBriefing() {
       />
 
       <form className={styles.card} onSubmit={handleSubmit}>
-        <label htmlFor="briefing" className={styles.label}>
-          Briefing
-        </label>
-        <textarea
+        <TextareaField
           id="briefing"
-          className={styles.textarea}
+          label="Briefing"
           placeholder="Descreva o projeto, objetivos, requisitos, restrições e qualquer contexto relevante..."
           value={briefing}
           onChange={(e) => setBriefing(e.target.value)}
