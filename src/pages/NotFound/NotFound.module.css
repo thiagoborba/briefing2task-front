@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 1rem;
+  gap: 1rem;
+}
+
+.code {
+  font-size: 6rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f1f0f5;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.description {
+  font-size: 0.9375rem;
+  color: #6b6880;
+  max-width: 400px;
+  line-height: 1.6;
+  margin: 0 0 0.5rem;
+}

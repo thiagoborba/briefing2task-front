@@ -70,7 +70,8 @@ src/
 ├── pages/
 │   ├── InputBriefing/      # rota /
 │   ├── EstruturaAnalisada/ # rota /estrutura-analisada
-│   └── Acoes/              # rota /acoes
+│   ├── Acoes/              # rota /acoes
+│   └── NotFound/           # rota * (404)
 ├── types/              # interfaces TypeScript
 └── utils/              # funções de formatação de texto
 ```
@@ -82,6 +83,7 @@ src/
 | `/` | Formulário de entrada do briefing |
 | `/estrutura-analisada` | Resultado estruturado da análise |
 | `/acoes` | Ações de exportação (copiar como task, Markdown, etc.) |
+| `*` | Página 404 — rota não encontrada |
 
 ## Segurança em produção
 

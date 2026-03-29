@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import InputBriefing from './pages/InputBriefing';
 import EstruturaAnalisada from './pages/EstruturaAnalisada';
 import Acoes from './pages/Acoes';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Route path="/" element={<InputBriefing />} />
         <Route path="/estrutura-analisada" element={<EstruturaAnalisada />} />
         <Route path="/acoes" element={<Acoes />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
