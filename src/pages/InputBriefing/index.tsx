@@ -11,11 +11,16 @@ function InputBriefing() {
   const [briefing, setBriefing] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const MAX_LENGTH = 5000;
   const navigate = useNavigate();
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
+    if (briefing.trim().length > MAX_LENGTH) {
+      setError(`O briefing não pode ultrapassar ${MAX_LENGTH} caracteres.`);
+      return;
+    }
     setLoading(true);
     try {
       const data = await analyseBriefing(briefing);
@@ -43,13 +48,13 @@ function InputBriefing() {
           value={briefing}
           onChange={(e) => setBriefing(e.target.value)}
         />
-        {error && <p className={styles.error}>{error}</p>}
+        {error && <p className={styles.error} role="alert">{error}</p>}
         <div className={styles.footer}>
-          <span className={styles.charCount}>{briefing.length} caracteres</span>
-          <Button type="submit" disabled={briefing.trim().length === 0 || loading}>
-            <span>{loading ? 'Analisando...' : 'Analisar Briefing'}</span>
+          <span className={styles.charCount}>{briefing.length} / {MAX_LENGTH} caracteres</span>
+          <Button type="submit" disabled={briefing.trim().length === 0 || loading} aria-busy={loading}>
+            <span aria-live="polite">{loading ? 'Analisando...' : 'Analisar Briefing'}</span>
             {!loading && (
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path
                   d="M3 8h10M9 4l4 4-4 4"
                   stroke="currentColor"

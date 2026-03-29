@@ -21,6 +21,11 @@
   cursor: not-allowed;
 }
 
+.primary:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
+}
+
 .secondary {
   display: inline-flex;
   align-items: center;
@@ -39,4 +44,9 @@
 .secondary:hover:not(:disabled) {
   border-color: #3a3850;
   color: #d4d2e0;
+}
+
+.secondary:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
 }

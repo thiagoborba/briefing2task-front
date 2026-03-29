@@ -17,7 +17,7 @@ function ActionCard({ title, description, copied, onClick, disabled }: ActionCar
     >
       <span className={styles.actionTitle}>{title}</span>
       <span className={styles.actionDesc}>{description}</span>
-      <span className={styles.copyLabel}>
+      <span className={styles.copyLabel} aria-live="polite">
         {copied ? '✓ Copiado!' : 'Clique para copiar'}
       </span>
     </button>
