@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './InputBriefing.module.css';
-
-const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:3000';
+import { analyseBriefing } from '../../api';
 
 function InputBriefing() {
   const [briefing, setBriefing] = useState('');
@@ -15,16 +14,7 @@ function InputBriefing() {
     setError(null);
     setLoading(true);
     try {
-      const res = await fetch(`${API_URL}/analyse-briefing`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ briefing }),
-      });
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(data.error ?? `Erro ${res.status}`);
-      }
-      const data = await res.json();
+      const data = await analyseBriefing(briefing);
       navigate('/estrutura-analisada', { state: { result: data, briefing } });
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Erro ao analisar briefing.');
