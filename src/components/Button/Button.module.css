@@ -1,0 +1,42 @@
+.primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.5rem;
+  border-radius: 8px;
+  background: #7c3aed;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background 0.15s ease, opacity 0.15s ease;
+  cursor: pointer;
+}
+
+.primary:hover:not(:disabled) {
+  background: #6d28d9;
+}
+
+.primary:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.5rem;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid #1e1d2a;
+  color: #6b6880;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: border-color 0.15s ease, color 0.15s ease;
+  cursor: pointer;
+}
+
+.secondary:hover:not(:disabled) {
+  border-color: #3a3850;
+  color: #d4d2e0;
+}

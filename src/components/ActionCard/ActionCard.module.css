@@ -1,0 +1,52 @@
+.card {
+  background: #111118;
+  border: 1px solid #1e1d2a;
+  border-radius: 14px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.card:hover:not(:disabled) {
+  border-color: rgba(139, 92, 246, 0.4);
+  background: #13121c;
+}
+
+.card:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.cardCopied {
+  border-color: rgba(52, 211, 153, 0.4) !important;
+  background: rgba(52, 211, 153, 0.04) !important;
+}
+
+.actionTitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #e2e0ec;
+}
+
+.actionDesc {
+  font-size: 0.8125rem;
+  color: #6b6880;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.copyLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #3a3850;
+  margin-top: 0.5rem;
+}
+
+.cardCopied .copyLabel {
+  color: #34d399;
+}
