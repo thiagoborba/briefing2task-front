@@ -15,10 +15,12 @@ No test runner is configured.
 
 ## Environment
 
-Create a `.env` file in the project root:
+`.env.development` is committed and sets `VITE_API_URL=http://localhost:3000` for local dev — no manual setup needed.
+
+For other environments, create a `.env` file in the project root:
 
 ```
-VITE_API_URL=http://localhost:3000
+VITE_API_URL=https://briefing2task-back.vercel.app
 ```
 
 `VITE_API_URL` defaults to `http://localhost:3000` if not set. The backend must be running separately.
@@ -27,7 +29,7 @@ VITE_API_URL=http://localhost:3000
 
 Single-purpose React SPA that sends a briefing text to a backend API and displays the structured result.
 
-**User flow:** `InputBriefing (/)` → `EstruturaAnalisada (/estrutura-analisada)` → `Acoes (/acoes)`
+**User flow:** `Home (/)` → `InputBriefing (/briefing)` → `EstruturaAnalisada (/estrutura-analisada)` → `Acoes (/acoes)`
 
 **State between pages** is passed via React Router `location.state` — there is no global state manager. Each page accesses `useLocation().state` to read the previous page's data.
 

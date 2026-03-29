@@ -1,3 +1,20 @@
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: none;
+  color: #6b6880;
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s ease;
+}
+
+.backButton:hover {
+  color: #a09db8;
+}
+
 .card {
   background: #111118;
   border: 1px solid #1e1d2a;

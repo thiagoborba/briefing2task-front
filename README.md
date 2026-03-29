@@ -2,7 +2,7 @@
 
 Interface web para transformar briefings de projetos em tarefas estruturadas. Cole o texto do briefing, clique em analisar e receba automaticamente: título, objetivo, público-alvo, entregáveis, checklist, informações faltantes e perguntas de alinhamento.
 
-> O frontend consome a API do [briefing2task-back](../briefing2task-back).
+> O frontend consome a API do [briefing2task-back](https://github.com/thiagoborba/briefing2task-back) — produção em `https://briefing2task-back.vercel.app`.
 
 ## Tecnologias
 
@@ -25,10 +25,10 @@ Interface web para transformar briefings de projetos em tarefas estruturadas. Co
 npm install
 ```
 
-Crie o arquivo `.env`:
+Em dev, o arquivo `.env.development` já está configurado com `http://localhost:3000`. Para outros ambientes, crie um `.env`:
 
 ```env
-VITE_API_URL=http://localhost:3000
+VITE_API_URL=https://briefing2task-back.vercel.app
 ```
 
 Inicie:
@@ -68,7 +68,8 @@ src/
 │   ├── PageLayout/
 │   └── TextareaField/
 ├── pages/
-│   ├── InputBriefing/      # rota /
+│   ├── Home/               # rota /
+│   ├── InputBriefing/      # rota /briefing
 │   ├── EstruturaAnalisada/ # rota /estrutura-analisada
 │   ├── Acoes/              # rota /acoes
 │   └── NotFound/           # rota * (404)
@@ -80,7 +81,8 @@ src/
 
 | Rota | Descrição |
 |---|---|
-| `/` | Formulário de entrada do briefing |
+| `/` | Landing page — apresentação da ferramenta com logo e botão para começar |
+| `/briefing` | Formulário de entrada do briefing |
 | `/estrutura-analisada` | Resultado estruturado da análise |
 | `/acoes` | Ações de exportação (copiar como task, Markdown, etc.) |
 | `*` | Página 404 — rota não encontrada |
