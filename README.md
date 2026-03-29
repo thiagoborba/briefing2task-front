@@ -87,3 +87,12 @@ src/
 
 - Configure `VITE_API_URL` com `https://` apontando para o backend em produção
 - Nunca commite o arquivo `.env`
+
+## SEO e indexação
+
+| Arquivo / Tag | Para quê |
+|---|---|
+| Open Graph (`og:`) | Preview bonito no Facebook, LinkedIn e WhatsApp |
+| Twitter Card | Preview bonito no Twitter/X |
+| `public/sitemap.xml` | Diz ao Google quais páginas existem |
+| `public/robots.txt` | Diz ao Google o que pode ou não indexar |
