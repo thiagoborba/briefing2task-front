@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://briefing2task.vercel.app/sitemap.xml
