@@ -1,73 +1,89 @@
-# React + TypeScript + Vite
+# Briefing to Tasks — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Interface web para transformar briefings de projetos em tarefas estruturadas. Cole o texto do briefing, clique em analisar e receba automaticamente: título, objetivo, público-alvo, entregáveis, checklist, informações faltantes e perguntas de alinhamento.
 
-Currently, two official plugins are available:
+> O frontend consome a API do [briefing2task-back](../briefing2task-back).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tecnologias
 
-## React Compiler
+| | |
+|---|---|
+| Framework | React 19 + Vite |
+| Linguagem | TypeScript |
+| Roteamento | React Router v7 |
+| HTTP Client | Axios |
+| Estilização | CSS Modules |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Pré-requisitos
 
-## Expanding the ESLint configuration
+- Node.js >= 18
+- Backend rodando (ver `briefing2task-back`)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Como rodar localmente
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Crie o arquivo `.env`:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```env
+VITE_API_URL=http://localhost:3000
 ```
+
+Inicie:
+
+```bash
+npm run dev
+```
+
+Acesse `http://localhost:5173`.
+
+## Como fazer build
+
+```bash
+npm run build   # gera os arquivos em dist/
+npm run preview # serve o build localmente para validar
+```
+
+Os arquivos de `dist/` podem ser hospedados em qualquer CDN estática (Vercel, Netlify, etc.).
+
+## Variáveis de ambiente
+
+| Variável | Obrigatória | Descrição |
+|---|---|---|
+| `VITE_API_URL` | Não | URL base do backend (padrão: `http://localhost:3000`) |
+
+## Estrutura do projeto
+
+```
+src/
+├── api/                # cliente axios
+├── components/         # componentes reutilizáveis
+│   ├── ActionCard/
+│   ├── Button/
+│   ├── CardGrid/
+│   ├── InfoCard/
+│   ├── PageHeader/
+│   ├── PageLayout/
+│   └── TextareaField/
+├── pages/
+│   ├── InputBriefing/      # rota /
+│   ├── EstruturaAnalisada/ # rota /estrutura-analisada
+│   └── Acoes/              # rota /acoes
+├── types/              # interfaces TypeScript
+└── utils/              # funções de formatação de texto
+```
+
+## Rotas
+
+| Rota | Descrição |
+|---|---|
+| `/` | Formulário de entrada do briefing |
+| `/estrutura-analisada` | Resultado estruturado da análise |
+| `/acoes` | Ações de exportação (copiar como task, Markdown, etc.) |
+
+## Segurança em produção
+
+- Configure `VITE_API_URL` com `https://` apontando para o backend em produção
+- Nunca commite o arquivo `.env`
