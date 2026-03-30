@@ -62,7 +62,9 @@ function EstruturaAnalisada() {
           {Array.isArray(result.entregaveis) ? (
             <ul className={infoCardStyles.list}>
               {result.entregaveis.map((item, i) => (
-                <li key={i} className={infoCardStyles.listItem}>{item}</li>
+                <li key={i} className={infoCardStyles.listItem}>
+                  {item}
+                </li>
               ))}
             </ul>
           ) : (
@@ -83,35 +85,42 @@ function EstruturaAnalisada() {
         </InfoCard>
       )}
 
-      {result.informacoes_faltantes && result.informacoes_faltantes.length > 0 && (
-        <InfoCard title="Informações Faltantes" warning>
-          <ul className={infoCardStyles.list}>
-            {result.informacoes_faltantes.map((item, i) => (
-              <li key={i} className={infoCardStyles.listItem}>{item}</li>
-            ))}
-          </ul>
-        </InfoCard>
-      )}
+      {result.informacoes_faltantes &&
+        result.informacoes_faltantes.length > 0 && (
+          <InfoCard title="Informações Faltantes" warning>
+            <ul className={infoCardStyles.list}>
+              {result.informacoes_faltantes.map((item, i) => (
+                <li key={i} className={infoCardStyles.listItem}>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </InfoCard>
+        )}
 
-      {result.perguntas_de_alinhamento && result.perguntas_de_alinhamento.length > 0 && (
-        <InfoCard title="Perguntas de Alinhamento">
-          <ol className={infoCardStyles.list}>
-            {result.perguntas_de_alinhamento.map((item, i) => (
-              <li key={i} className={infoCardStyles.listItem}>{item}</li>
-            ))}
-          </ol>
-        </InfoCard>
-      )}
+      {result.perguntas_de_alinhamento &&
+        result.perguntas_de_alinhamento.length > 0 && (
+          <InfoCard title="Perguntas de Alinhamento">
+            <ol className={infoCardStyles.list}>
+              {result.perguntas_de_alinhamento.map((item, i) => (
+                <li key={i} className={infoCardStyles.listItem}>
+                  {item}
+                </li>
+              ))}
+            </ol>
+          </InfoCard>
+        )}
 
       <div className={styles.actions}>
-        <Button variant="secondary" onClick={() => navigate('/')}>
-          Novo Briefing
+        <Button variant="secondary" onClick={() => navigate('/briefing')}>
+          Voltar
         </Button>
-        <Button onClick={() => navigate('/acoes', { state: { result, briefing: state?.briefing } })}>
+        <Button
+          onClick={() =>
+            navigate('/acoes', { state: { result, briefing: state?.briefing } })
+          }
+        >
           Ver Ações
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
         </Button>
       </div>
     </PageLayout>

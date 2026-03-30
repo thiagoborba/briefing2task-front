@@ -26,7 +26,9 @@ function InputBriefing() {
       const data = await analyseBriefing(briefing);
       navigate('/estrutura-analisada', { state: { result: data, briefing } });
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Erro ao analisar briefing.');
+      setError(
+        err instanceof Error ? err.message : 'Erro ao analisar briefing.',
+      );
     } finally {
       setLoading(false);
     }
@@ -35,8 +37,20 @@ function InputBriefing() {
   return (
     <PageLayout maxWidth="680">
       <button className={styles.backButton} onClick={() => navigate('/')}>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M13 8H3M7 4l-4 4 4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M13 8H3M7 4l-4 4 4 4"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
         Voltar
       </button>
@@ -54,22 +68,23 @@ function InputBriefing() {
           value={briefing}
           onChange={(e) => setBriefing(e.target.value)}
         />
-        {error && <p className={styles.error} role="alert">{error}</p>}
+        {error && (
+          <p className={styles.error} role="alert">
+            {error}
+          </p>
+        )}
         <div className={styles.footer}>
-          <span className={styles.charCount}>{briefing.length} / {MAX_LENGTH} caracteres</span>
-          <Button type="submit" disabled={briefing.trim().length === 0 || loading} aria-busy={loading}>
-            <span aria-live="polite">{loading ? 'Analisando...' : 'Analisar Briefing'}</span>
-            {!loading && (
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path
-                  d="M3 8h10M9 4l4 4-4 4"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            )}
+          <span className={styles.charCount}>
+            {briefing.length} / {MAX_LENGTH} caracteres
+          </span>
+          <Button
+            type="submit"
+            disabled={briefing.trim().length === 0 || loading}
+            aria-busy={loading}
+          >
+            <span aria-live="polite">
+              {loading ? 'Analisando...' : 'Analisar Briefing'}
+            </span>
           </Button>
         </div>
       </form>
